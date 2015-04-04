@@ -51,3 +51,11 @@
   color: #039FAF;
   font-size: 40pt;
 }
+
+.dailyEntryPermalink {
+  float: right;
+}
+
+.dailyEntryTitle {
+  margin-top: 0.5em;
+}
