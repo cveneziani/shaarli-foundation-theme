@@ -31,5 +31,5 @@ Then, on your web server:
 
 Shaarly Foundation Theme is released under the GPL License.
 It also includes:
-* [Foundation](http://foundation.zurb.com/) (MIT License) 
-* [Shaarli](https://github.com/shaarli/Shaarli) logo (zlib/libpng License).
+* [Foundation](http://foundation.zurb.com/) - MIT License
+* [Shaarli](https://github.com/shaarli/Shaarli) logo - zlib/libpng License
