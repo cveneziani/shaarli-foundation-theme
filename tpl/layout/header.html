@@ -1,0 +1,51 @@
+<nav class="top-bar l-navigation" data-options="is_hover:false">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="?">
+          <img src="../../images/logo.png" />
+          {$shaarlititle|htmlspecialchars}
+        </a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="?"><span>Menu</span></a></li>
+  </ul>
+  {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
+      {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
+  {else}
+    <section class="top-bar-section">
+      <ul class="left">
+        {if="isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']"}
+          <li class="has-form">
+            <a href="?do=addlink" class="button">Add link</a>
+          </li>
+        {/if}
+        <li><a href="?do=tagcloud" class="l-navigation--link">Tag cloud</a></li>
+        <li><a href="?do=picwall{$searchcrits}" class="l-navigation--link">Picture wall</a></li>
+        <li><a href="?do=daily" class="l-navigation--link">Daily</a></li>
+      </ul>
+      <ul class="right">
+        <li class="has-dropdown not-click">
+          <a href="#">Feeds</a>
+          <ul class="dropdown">
+            <li><a href="{$feedurl}?do=rss{$searchcrits}" class="l-navigation--link">RSS Feed</a></li>
+            <li><a href="{$feedurl}?do=atom{$searchcrits}" class="l-navigation--link">ATOM Feed</a></li>
+          </ul>
+        </li>
+        {if="isLoggedIn()"}
+          <li class="has-dropdown not-click">
+            <a href="#">Account</a>
+            <ul class="dropdown">
+              <li><a href="?do=changepasswd" class="l-navigation--link">Change password</a></li>
+              <li><a href="?do=configure" class="l-navigation--link">Configure your Shaarli</a></li>
+              <li><a href="?do=tools" class="l-navigation--link">Tools</a></li>
+              <li><a href="?do=logout" class="l-navigation--link">Logout</a></li>
+            </ul>
+          </li>
+        {else}
+          <li><a href="?do=login" class="l-navigation--link">Login</a></li>
+        {/if}
+      </ul>
+    </section>
+  {/if}
+</nav>

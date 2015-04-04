@@ -1,0 +1,53 @@
+.l-navigation, .l-navigation .top-bar-section .has-form, .l-navigation li a:not(.button) {
+  background-color: #333;
+}
+
+.m-link .m-link--title {
+  margin-bottom: 0
+}
+
+.m-link .m-link--url {
+  margin-top: 0;
+}
+
+.m-qrcode--modal {
+  text-align: center;
+}
+
+.m-summary .m-summary--term {
+  display: inline-block;
+}
+
+.m-tagcloud--count {
+  color: #99f;
+  font-size: 9pt;
+  padding-left: 5px;
+  padding-right: 2px;
+}
+
+.m-tagcloud--link {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.m-tagcloud--level-8 {
+  color: #FF7600;
+  font-size: 8pt;
+}
+.m-tagcloud--level-16 {
+  color: #DE2159;
+  font-size: 16pt;
+}
+.m-tagcloud--level-24 {
+  color: #A32CDE;
+  font-size: 24pt;
+}
+.m-tagcloud--level-32 {
+  color: #87A800;
+  font-size: 32pt;
+}
+.m-tagcloud--level-40 {
+  color: #039FAF;
+  font-size: 40pt;
+}

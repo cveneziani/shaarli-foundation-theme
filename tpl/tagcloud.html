@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body>
+    {$h1="Tag cloud"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <div class="row">
+      <div class="large-12 columns">
+        {loop="tags"}
+          <span class="m-tagcloud--count">{$value.count}</span>
+          <a href="?searchtags={$key|htmlspecialchars}" class="m-tagcloud--link m-tagcloud--level-{function="round($value.size / 8) * 8"}">
+            {$key|htmlspecialchars}
+          </a>
+        {/loop}
+      </div>
+    </div>
+
+    {include="layout/footer"}
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="large-6 columns">
+    <div class="row collapse">
+      <form method="GET" name="searchform">
+        <div class="large-7 columns">
+          <input type="text" id="searchform_value" name="searchterm" value="{function="$_GET['searchterm']"}" />
+        </div>
+        <div class="large-5 columns">
+          <input type="submit" value="Search" class="button prefix" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="row collapse">
+      <form method="GET" name="tagfilter">
+        <div class="large-7 columns">
+          <input type="text" name="searchtags" id="tagfilter_value" value="" class="m-tags" />
+        </div>
+        <div class="large-5 columns">
+          <input type="submit" value="Filter by tag" class="button prefix" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div id="footer" class="row">
+  <div class="large-12 columns">
+    <h5>
+      <small>
+        <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli">
+          Shaarli {$version|htmlspecialchars}
+        </a>
+        -
+        The personal, minimalist, super-fast, no-database delicious clone.
+        By <a href="http://sebsauvage.net" target="_blank">sebsauvage.net</a>.
+        Theme with Foundation by <a href="https://www.github.com/cveneziani" target="_blank">Cecile Veneziani</a>.
+      </small>
+    </h5>
+
+    {if="$newversion"}
+      <div data-alert="" class="alert-box alert">
+        Shaarli {$newversion|htmlspecialchars} is <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli#download">available</a>.
+      </div>
+    {/if}
+  </div>
+</div>
+
+{if="empty($GLOBALS['disablejquery'])"}
+  <script src="custom/vendor/assets/javascripts/jquery.min.js#"></script>
+  <script src="custom/vendor/assets/javascripts/foundation.min.js#"></script>
+  <script src="custom/vendor/assets/javascripts/jquery-ui.custom.min.js#"></script>
+{/if}
+
+<script src="custom/javascripts/shaarli.js#"></script>

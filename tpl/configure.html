@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body onload="document.configform.title.focus();">
+    {$h1="Configuration"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+    {$timezone_js}
+
+    <form method="POST" action="" name="configform" id="configform">
+      <div class="row">
+        <div class="large-12 columns">
+          <input type="hidden" name="token" value="{$token}" />
+
+          <label for="title">Page title</label>
+          <input type="text" name="title" id="title" value="{$title}" />
+          <fieldset>
+            <legend>Timezone</legend>
+            <div class="large-4 columns">
+              {function="str_replace(array("Continent:", "City:"), array('<label for="continent">Continent</label>', '<label for="city">City</label>'), $timezone_form)"}
+            </div>
+          </fieldset>
+          <label for="redirector">Redirector</label>
+          <input type="text" name="redirector" id="redirector" value="{$redirector}" placeholder="e.g. http://anonym.to/ will mask the HTTP_REFERER" />
+
+          <fieldset>
+            <legend>Security</legend>
+
+            <label for="disablesessionprotection">
+              <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection" {if="!empty($GLOBALS['disablesessionprotection'])"}checked{/if} />
+              Disable session cookie hijacking protection (Check this if you get disconnected often or if your IP address changes often.)
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Features</legend>
+            <label for="disablejquery">
+              <input type="checkbox" name="disablejquery" id="disablejquery" {if="!empty($GLOBALS['disablejquery'])"}checked{/if} />
+              Disable jQuery and all heavy javascript (for example: Autocomplete in tags. Useful for slow computers.)
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>New link</legend>
+            <label for="privateLinkByDefault">
+              <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if} />
+              All new link are private by default
+            </label>
+          </fieldset>
+
+          <input type="submit" name="Save" value="Save" class="button" />
+        </form>
+      </div>
+    </div>
+    {include="layout/footer"}
+  </body>
+</html>

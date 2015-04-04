@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body>
+    {$h1="Edit link"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <form method="post" name="linkform">
+      <input type="hidden" name="lf_linkdate" value="{$link.linkdate}" />
+      <input type="hidden" name="token" value="{$token}">
+        <div class="row">
+          <div class="large-12 columns">
+            {if condition="$http_referer"}
+              <input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">
+            {/if}
+
+            <label for="lf_url">URL</label>
+            <input type="text" name="lf_url" id="lf_url" value="{$link.url|htmlspecialchars}" />
+
+            <label for="lf_title">Title</label>
+            <input type="text" name="lf_title" id="lf_title" value="{$link.title|htmlspecialchars}" />
+
+            <label for="lf_description">Description</label>
+            <textarea name="lf_description" id="lf_description" rows="4" cols="25">{$link.description|htmlspecialchars}</textarea>
+
+            <label for="lf_tags">Tags</label>
+            <input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="m-tags" />
+
+            {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+              <label for="lf_private">
+                <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
+                Private
+              </label>
+            {else}
+              <label for="lf_private">
+                <input type="checkbox" name="lf_private" id="lf_private">
+                Private
+              </label>
+            {/if}
+
+            <input type="submit" value="Save" name="save_edit" class="button" />
+            <input type="submit" value="Cancel" name="cancel_edit" class="button secondary" />
+
+            {if condition="!$link_is_new"}
+              <input type="submit" value="Delete" name="delete_link" class="button alert right m-deletion-link--button" />
+            {/if}
+          </div>
+        </form>
+      </div>
+    </div>
+    {include="layout/footer"}
+  </body>
+</html>

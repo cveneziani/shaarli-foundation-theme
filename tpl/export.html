@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body>
+    {$h1="Export"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <div class="row">
+      <div class="large-2 columns">
+        <ul class="side-nav">
+          <li><a href="?do=tools">Tools</a></li>
+          <li class="divider"></li>
+          <li><a href="?do=changetag">Rename/delete tags</a></li>
+          <li><a href="?do=import">Import</a></li>
+          <li class="active"><a href="?do=export">Export</a></li>
+        </ul>
+      </div>
+      <div class="large-10 columns">
+        <dl>
+          <dt><a href="?do=export&what=all">Export all</a></dt>
+          <dd>Export all links.</dd>
+
+          <dt><a href="?do=export&what=public">Export public</a></dt>
+          <dd>Export public links only.</dd>
+
+          <dt><a href="?do=export&what=private">Export private</a></dt>
+          <dd>Export private links only.</dd>
+      </div>
+    </div>
+
+    {include="layout/footer"}
+  </body>
+</html>

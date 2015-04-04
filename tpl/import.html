@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body>
+    {$h1="Import"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <div id="uploaddiv" class="row">
+      <div class="large-2 columns">
+        <ul class="side-nav">
+          <li><a href="?do=tools">Tools</a></li>
+          <li class="divider"></li>
+          <li><a href="?do=changetag">Rename/delete tags</a></li>
+          <li class="active"><a href="?do=import">Import</a></li>
+          <li><a href="?do=export">Export</a></li>
+        </ul>
+      </div>
+      <div class="large-10 columns">
+        <dl>
+          <dt>Import Netscape HTML bookmarks</dt>
+          <dd>
+            <ul class="no-bullet">
+              <li>As exported from Firefox/Chrome/Opera/delicious/diigo...</li>
+              <li>Max: {$maxfilesize|htmlspecialchars} bytes.</li>
+            </ul>
+          </dd>
+        </dl>
+        <form method="POST" action="?do=upload" enctype="multipart/form-data" name="uploadform" id="uploadform">
+          <input type="hidden" name="token" value="{$token}" />
+          <input type="file" name="filetoupload" />
+          <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize|htmlspecialchars}" />
+
+          <label for="private">
+            <input type="checkbox" name="private" id="private" />
+            Import all links as private
+          </label>
+          <label for="overwrite">
+            <input type="checkbox" name="overwrite" id="overwrite" />
+            Overwrite existing links
+          </label>
+
+          <input type="submit" name="import_file" value="Import" class="button" />
+        </form>
+      </div>
+    </div>
+    {include="layout/footer"}
+  </body>
+</html>

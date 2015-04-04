@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="large-12 columns">
+    <div class="large-5 columns pagination-centered">
+      {if="$page_max > 1"}
+        <ul class="pagination">
+          {if="$next_page_url"}
+            <li class="arrow"><a href="{$next_page_url}" id="paging_newer">&laquo;</a></li>
+            <li><a href="{$next_page_url}">{$page_current - 1}</a></li>
+          {else}
+            <li class="arrow unavailable"><a href="#">&laquo;</a></li>
+          {/if}
+          <li class="current" id="paging_current"><a href="#">{$page_current}</a></li>
+          {if="$previous_page_url"}
+            <li><a href="{$previous_page_url}">{$page_current + 1}</a></li>
+            {if="($page_current + 1) < ($page_max - 1)"}
+              <li class="unavailable"><a href="">&hellip;</a></li>
+            {/if}
+            {if="$page_max != ($page_current + 1)"}
+              <li><a href="?page={$page_max}">{$page_max}</a></li>
+            {/if}
+            <li class="arrow"><a href="{$previous_page_url}" id="paging_older">&raquo;</a></li>
+          {else}
+            <li class="arrow unavailable"><a href="#">&raquo;</a></li>
+          {/if}
+        </ul>
+      {else}
+        &nbsp;
+      {/if}
+    </div>
+    <div class="large-4 columns">
+      <form method="GET" class="custom">
+        <select name="page_size" id="page_size" class="medium m-pagination--per-page">
+          <option>Links per page</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </form>
+    </div>
+    <div class="large-3 columns">
+      <form method="GET">
+        <div class="row collapse">
+          <div class="large-6 columns">
+            <span class="prefix">#</span>
+          </div>
+          <div class="large-6 columns">
+            <input type="text" name="linksperpage" size="2" value="{function="ceil($result_count/$page_max)"}" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

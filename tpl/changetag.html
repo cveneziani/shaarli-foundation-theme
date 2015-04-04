@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>{include="layout/includes"}</head>
+  <body>
+    {$h1="Rename / Delete tags"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <div class="row">
+      <div class="large-2 columns">
+        <ul class="side-nav">
+          <li><a href="?do=tools">Tools</a></li>
+          <li class="divider"></li>
+          <li class="active"><a href="?do=changetag">Rename/delete tags</a></li>
+          <li><a href="?do=import">Import</a></li>
+          <li><a href="?do=export">Export</a></li>
+        </ul>
+      </div>
+      <div class="large-10 columns">
+        <form method="POST" action="" name="changetag" id="changetag">
+          <input type="hidden" name="token" value="{$token}" />
+
+          <div class="row">
+            <div class="large-6 columns">
+              <label for="fromtag">From <small>(Case sensitive)</small></label>
+              <input type="text" name="fromtag" id="fromtag" class="m-tags--single" />
+            </div>
+            <div class="large-6 columns">
+              <label for="totag">To <small>(Case sensitive)</small></label>
+              <input type="text" name="totag" />
+            </div>
+          </div>
+
+          <input type="submit" name="renametag" value="Rename tag" class="button" />
+          <input type="submit" name="deletetag" value="Delete tag" class="button alert right m-deletion-tag--button" />
+        </form>
+      </div>
+    </div>
+    {include="layout/footer"}
+  </body>
+</html>

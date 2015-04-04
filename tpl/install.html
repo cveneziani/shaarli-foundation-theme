@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {include="layout/includes"}
+    {$timezone_js}
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 class="subheader">
+          <img src="../images/logo.png" />
+          Shaarli - Installation
+        </h1>
+        <p>
+          It looks like it's the first time you run Shaarli.<br/>
+          Please configure it.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-4 columns">
+        <form method="POST" action="" name="installform" id="installform">
+          <label for="setlogin">Login</label>
+          <input type="text" name="setlogin" id="setlogin"/>
+          <label for="setpassword">Password</label>
+          <input type="password" name="setpassword" id="setpassword" />
+          {function="str_replace(array('<tr><td valign="top"><b>Timezone:</b></td><td>', "Continent:", "City:", '</td></tr>'), array('<fieldset><legend>Timezone</legend>', '<label for="continent">Continent</label>', '<label for="city">City</label>', '</fieldset>'), $timezone_html)"}
+          <label for="title">Page title</label>
+          <input type="text" name="title" size="title" />
+          <input type="submit" name="Save" value="Save" class="button" />
+        </form>
+      </div>
+    </div>
+    {include="layout/footer"}
+  </body>
+</html>

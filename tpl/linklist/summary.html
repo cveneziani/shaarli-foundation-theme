@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="inline-list m-summary">
+      {if="isLoggedIn()"}
+        <li>
+          {if="$privateonly"}
+            <a href="?privateonly" title="Click to see all links">
+              <i class="foundicon-lock"></i>
+            </a>
+          {else}
+            <a href="?privateonly" title="Click to see only private links">
+              <i class="foundicon-unlock"></i>
+            </a>
+          {/if}
+        </li>
+      {/if}
+      {if="count($links)==0"}
+        <li>Nothing found.</li>
+      {else}
+        <li>
+          {$result_count} result(s)
+          {if="$search_type=='fulltext'"}
+            for <em class="m-summary--term">{$search_crits}</em>
+          {/if}
+          {if="$search_type=='tags'"}
+            for tags
+          {/if}
+        </li>
+        {if="$search_type=='tags'"}
+          {loop="search_crits"}
+            <li>
+              <span class="label secondary">
+                <strong>
+                  <a href="?removetag={$value|htmlspecialchars}">
+                    {$value|htmlspecialchars}
+                    &times;
+                  </a>
+                </strong>
+              </span>
+            </li>
+          {/loop}
+        {/if}
+      {/if}
+    </ul>
+  </div>
+</div>

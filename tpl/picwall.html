@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {include="layout/includes"}
+  </head>
+  <body>
+    {$h1="Picture wall"}
+    {include="layout/header"}
+    {include="layout/subheader"}
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="inline-list">
+          {loop="linksToDisplay"}
+            <li>{$value.thumbnail}</li>
+          {/loop}
+        </ul>
+      </div>
+    </div>
+
+    {include="layout/footer"}
+    {if="empty($GLOBALS['disablejquery'])"}
+      <script src="inc/jquery.lazyload.min.js#"></script>
+    {/if}
+  </body>
+</html>
