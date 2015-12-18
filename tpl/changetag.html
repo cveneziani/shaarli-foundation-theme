@@ -23,11 +23,14 @@
           <div class="row">
             <div class="large-6 columns">
               <label for="fromtag">From <small>(Case sensitive)</small></label>
-              <input type="text" name="fromtag" id="fromtag" class="m-tags--single" />
+              <input type="text" name="fromtag" id="fromtag" list="tagsList" autocomplete="off" class="awesomplete m-tags--single" data-minChars="1"  />
+              <datalist id="tagsList">
+                {loop="$tags"}<option>{$key}</option>{/loop}
+              </datalist>
             </div>
             <div class="large-6 columns">
               <label for="totag">To <small>(Case sensitive)</small></label>
-              <input type="text" name="totag" />
+              <input type="text" name="totag" id="totag" />
             </div>
           </div>
 
@@ -36,6 +39,7 @@
         </form>
       </div>
     </div>
+
     {include="layout/footer"}
   </body>
 </html>

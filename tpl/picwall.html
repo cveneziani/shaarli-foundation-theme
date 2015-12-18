@@ -10,17 +10,50 @@
 
     <div class="row">
       <div class="large-12 columns">
+        <div id="plugin_zone_start_picwall" class="plugin_zone">
+          {loop="$plugin_start_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
         <ul class="inline-list">
           {loop="linksToDisplay"}
-            <li>{$value.url|thumbnail}</li>
+            <li>
+              <a href="{$value.real_url}" title="{$value.title}">{$value.thumbnail}</a>
+
+              {loop="$value.picwall_plugin"}
+                {$value}
+              {/loop}
+            </li>
           {/loop}
         </ul>
       </div>
     </div>
 
+    <div class="clear"></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="plugin_zone_end_picwall" class="plugin_zone">
+          {loop="$plugin_end_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
+
     {include="layout/footer"}
-    {if="empty($GLOBALS['disablejquery'])"}
-      <script src="inc/jquery.lazyload.min.js#"></script>
-    {/if}
+
+    <script src="inc/blazy-1.3.1.min.js#"></script>
+
+    <script>
+      window.onload = function() {
+        var bLazy = new Blazy();
+      }
+    </script>
   </body>
 </html>

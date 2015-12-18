@@ -8,15 +8,39 @@
 
     <div class="row">
       <div class="large-12 columns">
+        <div id="plugin_zone_start_tagcloud" class="plugin_zone">
+          {loop="$plugin_start_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
         {loop="tags"}
           <span class="m-tagcloud--count">{$value.count}</span>
-          <a href="?searchtags={$key|htmlspecialchars}" class="m-tagcloud--link m-tagcloud--level-{function="round($value.size / 8) * 8"}">
-            {$key|htmlspecialchars}
+          <a href="?searchtags={$key|urlencode}" class="m-tagcloud--link m-tagcloud--level-{function="round($value.size / 8) * 8"}">
+            {$key}
           </a>
+
+          {loop="$value.tag_plugin"}
+            {$value}
+          {/loop}
         {/loop}
       </div>
     </div>
 
     {include="layout/footer"}
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="plugin_zone_end_tagcloud" class="plugin_zone">
+          {loop="$plugin_end_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
   </body>
 </html>

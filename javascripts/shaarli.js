@@ -75,20 +75,9 @@ document.body.onload = function(){
   }
 }
 
-if (jQuery != undefined) {
+jQuery(document).ready(function($) {
   $(document).foundation();
-  $(document).ready(function() {
-    // Tags
-    $('.m-tags').autocomplete({source:'?ws=tags', minLength: 1});
-    $('.m-tags--single').autocomplete({source:'?ws=singletag', minLength: 1});
-    $('.ui-autocomplete').addClass('f-dropdown');
-
-    // Picwall
-    if ($('img.lazyimage').length) {
-      $('img.lazyimage').show().lazyload();
-    }
-  });
-}
+});
 
 changePageSize = function(perPageSelect){
   var page_size = perPageSelect.value;

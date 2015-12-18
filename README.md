@@ -1,6 +1,6 @@
 # Shaarly Foundation Theme
 
-This is a [Foundation](http://foundation.zurb.com/) Theme for [Shaarli](https://github.com/shaarli/Shaarli) v0.0.45beta.
+This is a [Foundation](http://foundation.zurb.com/) Theme for [Shaarli](https://github.com/shaarli/Shaarli) v0.6.1
 
 ## Installing
 

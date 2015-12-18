@@ -3,52 +3,66 @@
   <head>{include="layout/includes"}</head>
   <body>
     {$h1="Edit link"}
-    {include="layout/header"}
+    {if="$source !== 'firefoxsocialapi'"}
+      {include="layout/header"}
+    {/if}
     {include="layout/subheader"}
 
     <form method="post" name="linkform">
       <input type="hidden" name="lf_linkdate" value="{$link.linkdate}" />
       <input type="hidden" name="token" value="{$token}">
+
         <div class="row">
           <div class="large-12 columns">
-            {if condition="$http_referer"}
-              <input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">
+            {if="$http_referer"}
+              <input type="hidden" name="returnurl" value="{$http_referer}">
             {/if}
 
             <label for="lf_url">URL</label>
-            <input type="text" name="lf_url" id="lf_url" value="{$link.url|htmlspecialchars}" />
+            <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input" />
 
             <label for="lf_title">Title</label>
-            <input type="text" name="lf_title" id="lf_title" value="{$link.title|htmlspecialchars}" />
+            <input type="text" name="lf_title" id="lf_title" value="{$link.title}" class="lf_input" />
 
             <label for="lf_description">Description</label>
-            <textarea name="lf_description" id="lf_description" rows="4" cols="25">{$link.description|htmlspecialchars}</textarea>
+            <textarea name="lf_description" id="lf_description" rows="4" cols="25">{$link.description}</textarea>
 
-            <label for="lf_tags">Tags</label>
-            <input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="m-tags" />
+            <label for="lf_tags"><i>Tags</i></label>
+            <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input" data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
 
-            {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
-              <label for="lf_private">
-                <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
-                Private
-              </label>
-            {else}
-              <label for="lf_private">
-                <input type="checkbox" name="lf_private" id="lf_private">
-                Private
-              </label>
-            {/if}
+            {loop="$edit_link_plugin"}
+              {$value}
+            {/loop}
+
+            <label for="lf_private">
+              {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+                <input type="checkbox" checked="checked" name="lf_private" id="lf_private" />
+              {else}
+                <input type="checkbox" name="lf_private" id="lf_private" />
+              {/if}
+
+              Private
+            </label>
 
             <input type="submit" value="Save" name="save_edit" class="button" />
             <input type="submit" value="Cancel" name="cancel_edit" class="button secondary" />
 
-            {if condition="!$link_is_new"}
+            {if="!$link_is_new"}
               <input type="submit" value="Delete" name="delete_link" class="button alert right m-deletion-link--button" />
             {/if}
           </div>
         </form>
       </div>
     </div>
-    {include="layout/footer"}
+
+    {if="$source !== 'firefoxsocialapi'"}
+      {include="layout/footer"}
+    {/if}
+
+    {if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn())"}
+      <script>
+        awesompleteUniqueTag('#lf_tags');
+      </script>
+    {/if}
   </body>
 </html>

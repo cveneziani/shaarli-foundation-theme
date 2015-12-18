@@ -14,12 +14,18 @@
 
           <label for="title">Page title</label>
           <input type="text" name="title" id="title" value="{$title}" />
+
+          <label for="titleLink">Title link:</label>
+          <input type="text" name="titleLink" id="titleLink" size="50" value="{$titleLink}">
+          <small>(default value is: ?)</small>
+
           <fieldset>
             <legend>Timezone</legend>
             <div class="large-4 columns">
               {function="str_replace(array("Continent:", "City:"), array('<label for="continent">Continent</label>', '<label for="city">City</label>'), $timezone_form)"}
             </div>
           </fieldset>
+
           <label for="redirector">Redirector</label>
           <input type="text" name="redirector" id="redirector" value="{$redirector}" placeholder="e.g. http://anonym.to/ will mask the HTTP_REFERER" />
 
@@ -33,14 +39,6 @@
           </fieldset>
 
           <fieldset>
-            <legend>Features</legend>
-            <label for="disablejquery">
-              <input type="checkbox" name="disablejquery" id="disablejquery" {if="!empty($GLOBALS['disablejquery'])"}checked{/if} />
-              Disable jQuery and all heavy javascript (for example: Autocomplete in tags. Useful for slow computers.)
-            </label>
-          </fieldset>
-
-          <fieldset>
             <legend>New link</legend>
             <label for="privateLinkByDefault">
               <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if} />
@@ -48,7 +46,28 @@
             </label>
           </fieldset>
 
-          <input type="submit" name="Save" value="Save" class="button" />
+          <fieldset>
+            <label>Enable RSS Permalinks</label>
+            <label for="enableRssPermalinks">
+              <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>Switches the RSS feed URLs between full URLs and shortlinks. Enabling it will show a permalink in the description, and the feed item will be linked to the absolute URL. Disabling it swaps this behaviour around (permalink in title and link in description). RSS Permalinks are currently <b>{if="$GLOBALS['config']['ENABLE_RSS_PERMALINKS']"}enabled{else}disabled{/if}
+            </label>
+          </fieldset>
+          <fieldset>
+            <label>Hide public links</label>
+            <label for="hidePublicLinks">
+              <input type="checkbox" name="hidePublicLinks" id="hidePublicLinks" {if="!empty($GLOBALS['config']['HIDE_PUBLIC_LINKS'])"}checked{/if}/>
+              Do not show any links if the user is not logged in.
+            </label>
+          </fieldset>
+          <fieldset>
+            <label>Update<label>
+            <label for="updateCheck">
+              <input type="checkbox" name="updateCheck" id="updateCheck" {if="!empty($GLOBALS['config']['ENABLE_UPDATECHECK'])"}checked{/if}/>
+              Notify me when a new release is ready
+            </label>
+          </fieldset>
+
+          <input type="submit" name="Save" value="Save config" class="button" />
         </form>
       </div>
     </div>

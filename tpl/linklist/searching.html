@@ -1,9 +1,9 @@
 <div class="row">
   <div class="large-6 columns">
     <div class="row collapse">
-      <form method="GET" name="searchform">
+      <form method="GET" name="searchform" id="headerform">
         <div class="large-7 columns">
-          <input type="text" id="searchform_value" name="searchterm" value="{function="$_GET['searchterm']"}" />
+          <input type="text" id="searchform_value" name="searchterm" placeholder="Search text" value="{function="$_GET['searchterm']"}" />
         </div>
         <div class="large-5 columns">
           <input type="submit" value="Search" class="button prefix" />
@@ -15,12 +15,20 @@
     <div class="row collapse">
       <form method="GET" name="tagfilter">
         <div class="large-7 columns">
-          <input type="text" name="searchtags" id="tagfilter_value" value="" class="m-tags" />
+          <input type="text" name="searchtags" id="tagfilter_value" placeholder="Filter by tag" value="" class="m-tags" autocomplete="off" class="awesomplete" data-multiple data-minChars="1" data-list="{loop="$tags"}{$key}, {/loop}" />
         </div>
         <div class="large-5 columns">
           <input type="submit" value="Filter by tag" class="button prefix" />
         </div>
       </form>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    {loop="$plugins_header.fields_toolbar"}
+      {$value}
+    {/loop}
   </div>
 </div>

@@ -4,14 +4,14 @@
       <h1>
         <a href="?">
           <img src="../../images/logo.png" />
-          {$shaarlititle|htmlspecialchars}
+          {$shaarlititle}
         </a>
       </h1>
     </li>
     <li class="toggle-topbar menu-icon"><a href="?"><span>Menu</span></a></li>
   </ul>
   {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
-      {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
+    {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
   {else}
     <section class="top-bar-section">
       <ul class="left">
@@ -45,7 +45,25 @@
         {else}
           <li><a href="?do=login" class="l-navigation--link">Login</a></li>
         {/if}
+
+        {loop="$plugins_header.buttons_toolbar"}
+          {$value}
+        {/loop}
       </ul>
     </section>
   {/if}
 </nav>
+
+{if="!empty($plugin_errors) && isLoggedIn()"}
+  <div class="row">
+    <div class="large-12 columns">
+      <ul class="errors">
+        {loop="plugin_errors"}
+          <li>{$value}</li>
+        {/loop}
+      </ul>
+    </div>
+  </div>
+{/if}
+
+<div class="clear"></div>

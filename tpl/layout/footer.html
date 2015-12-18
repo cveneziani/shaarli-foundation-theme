@@ -7,23 +7,37 @@
         </a>
         -
         The personal, minimalist, super-fast, no-database delicious clone.
-        By the <a href="https://github.com/shaarli/Shaarli" target="_blank">Shaarli</a> community - <a href="doc/index.html">Help/documentation</a>.
+        By the <a href="https://github.com/shaarli/Shaarli" target="_blank">Shaarli</a> community - <a href="doc/Home.html">Help/documentation</a>.
         Theme with <a href="http://foundation.zurb.com/">Foundation</a> by <a href="https://www.github.com/cveneziani" target="_blank">Cecile Veneziani</a>.
+
+        {loop="$plugins_footer.text"}
+            {$value}
+        {/loop}
       </small>
     </h5>
 
     {if="$newversion"}
       <div data-alert="" class="alert-box alert">
-        <span id="version_id">&#x25CF;</span> Shaarli {$newversion|htmlspecialchars} is <a href="https://github.com/shaarli/Shaarli/releases">available</a>.
+        <span id="version_id">&#x25CF;</span> Shaarli {$newVersion} is <a href="https://github.com/shaarli/Shaarli/releases">available</a>.
+      </div>
+    {/if}
+
+    {if="$versionError"}
+      <div id="newversion">
+        Error: {$versionError}
       </div>
     {/if}
   </div>
 </div>
 
-{if="empty($GLOBALS['disablejquery'])"}
-  <script src="foundation-theme/vendor/assets/javascripts/jquery.min.js#"></script>
-  <script src="foundation-theme/vendor/assets/javascripts/foundation.min.js#"></script>
-  <script src="foundation-theme/vendor/assets/javascripts/jquery-ui.custom.min.js#"></script>
-{/if}
+<script src="foundation-theme/vendor/assets/javascripts/jquery.min.js#"></script>
+<script src="foundation-theme/vendor/assets/javascripts/foundation.min.js#"></script>
+<script src="foundation-theme/vendor/assets/javascripts/jquery-ui.custom.min.js#"></script>
+<script src="inc/awesomplete.min.js#"></script>
+<script src="inc/awesomplete-multiple-tags.js#"></script>
 
 <script src="foundation-theme/javascripts/shaarli.js#"></script>
+
+{loop="$plugins_footer.js_files"}
+  <script src="{$value}#"></script>
+{/loop}

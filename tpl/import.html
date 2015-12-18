@@ -21,15 +21,15 @@
           <dt>Import Netscape HTML bookmarks</dt>
           <dd>
             <ul class="no-bullet">
-              <li>As exported from Firefox/Chrome/Opera/delicious/diigo...</li>
-              <li>Max: {$maxfilesize|htmlspecialchars} bytes.</li>
+              <li>As exported from Firefox/Chrome/Opera/Delicious/Diigo...</li>
+              <li>Max: {$maxfilesize} bytes.</li>
             </ul>
           </dd>
         </dl>
         <form method="POST" action="?do=upload" enctype="multipart/form-data" name="uploadform" id="uploadform">
           <input type="hidden" name="token" value="{$token}" />
           <input type="file" name="filetoupload" />
-          <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize|htmlspecialchars}" />
+          <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}" />
 
           <label for="private">
             <input type="checkbox" name="private" id="private" />

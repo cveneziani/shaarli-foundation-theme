@@ -6,8 +6,18 @@
     {include="linklist/header"}
     {include="linklist/navigation"}
 
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="plugin_zone_start_linklist" class="plugin_zone">
+          {loop="$plugin_start_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
+
     <div id="linklist" class="row">
-      <div class="large-12 columns">        
+      <div class="large-12 columns">
         {loop="links"}
           <div class="panel m-link">
             <div class="row">
@@ -18,9 +28,9 @@
                       <i class="foundicon-lock"></i>
                     {/if}
                   </small>
-                  <a href="{$redirector}{$value.url|htmlspecialchars}">{$value.title|htmlspecialchars}</a>
+                  <a href="{$value.short_url}">{$value.title}</a>
                 </h3>
-                <h4 class="subheader m-link--url"><small>{$value.url|htmlspecialchars}</small></h4>
+                <h4 class="subheader m-link--url"><small>{$value.real_url}</small></h4>
               </div>
               <div class="large-2 columns">
                 {if="isLoggedIn()"}
@@ -61,34 +71,50 @@
               <div class="large-12 columns">
                 <p>
                   {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-                    {$value.localdate|htmlspecialchars} -
+                    <a href="?{$value.linkdate|smallHash}">{function="strftime('%c', $value.timestamp)"} - permalink</a>
+                  {else}
+                    <a href="?{$value.shorturl}">permalink</a>
                   {/if}
-                  <a href="?{$value.linkdate|smallHash}">permalink</a>
+
                   -
-                  <a href="#" data-reveal-id="m-qrcode--modal-{$value.linkdate}">
-                    <img src="images/qrcode.png#" width="13" height="13" title="QR-Code">
-                  </a>
+
+                  {loop="$value.link_plugin"}
+                    <span>{$value}</span> -
+                  {/loop}
+
+                  <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a>
                 </p>
 
                 {if="$value.tags"}
                   <ul class="inline-list">
                     {loop="value.taglist"}
                      <li><span class="label secondary">
-                      <a href="?addtag={$value|urlencode}" title="Add {$value|htmlspecialchars} to filter tags">{$value|htmlspecialchars}</a></span></li>
+                      <a href="?addtag={$value|urlencode}" title="Add {$value} to filter tags">{$value}</a></span></li>
                     {/loop}
                   </ul>
                 {/if}
-              </div>
-              <div id="m-qrcode--modal-{$value.linkdate}" class="reveal-modal tiny m-qrcode--modal">
-                <img src="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" width="200" height="200"/>
-                <a class="close-reveal-modal">&#215;</a>
               </div>
             </div>
           </div>
         {/loop}
       </div>
     </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="plugin_zone_end_linklist" class="plugin_zone">
+          {loop="$plugin_end_zone"}
+            {$value}
+          {/loop}
+        </div>
+      </div>
+    </div>
+
     {include="linklist/navigation"}
     {include="layout/footer"}
+
+    <script>
+      awesompleteUniqueTag('#tagfilter_value');
+    </script>
   </body>
 </html>

@@ -5,6 +5,7 @@
 <link rel="alternate" type="application/rss+xml" href="{$feedurl}?do=rss{$searchcrits}#" title="RSS Feed" />
 <link rel="alternate" type="application/atom+xml" href="{$feedurl}?do=atom{$searchcrits}#" title="ATOM Feed" />
 <link href="foundation-theme/images/favicon.ico#" rel="shortcut icon" type="image/x-icon" />
+<link type="text/css" rel="stylesheet" href="../../../inc/awesomplete.css" />
 <link type="text/css" rel="stylesheet" href="foundation-theme/vendor/assets/stylesheets/foundation.min.css?version={$version|urlencode}#" />
 <link type="text/css" rel="stylesheet" href="foundation-theme/vendor/assets/stylesheets/general_foundicons.css?version={$version|urlencode}#" />
 <link type="text/css" rel="stylesheet" href="foundation-theme/vendor/assets/stylesheets/jquery-ui.custom.min.css?version={$version|urlencode}#" />
@@ -12,6 +13,10 @@
   <link rel="stylesheet" href="foundation-theme/vendor/assets/stylesheets/general_foundicons_ie7.css?version={$version|urlencode}#" />
 <![endif]-->
 <link type="text/css" rel="stylesheet" href="foundation-theme/stylesheets/shaarli.css?version={$version|urlencode}#" />
-{if condition="is_file('inc/user.css')"}
-  <link type="text/css" rel="stylesheet" href="inc/shaarli.css?version={$version|urlencode}#" />
+{if="is_file('inc/user.css')"}
+  <link type="text/css" rel="stylesheet" href="inc/user.css" />
 {/if}
+{loop="$plugins_includes.css_files"}
+  <link type="text/css" rel="stylesheet" href="{$value}#"/>
+{/loop}
+<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle|htmlspecialchars}"/>
